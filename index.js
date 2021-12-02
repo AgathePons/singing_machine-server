@@ -1,5 +1,7 @@
 // Ajouter ici le ou les require() pour importer les modules dont vous aurez besoin.
 const http = require('http');
+const fs = require('fs');
+
 // Hit parade, classé du premier au dernier.
 const hitParade = [{
     position: 1,
@@ -52,7 +54,6 @@ const hitParade = [{
     title: `Blind (feat. Emmi)`,
   },
 ];
-
 let statsCount = 0;
 
 // Votre code va ici
@@ -62,6 +63,8 @@ const server = http.createServer((req, res) => {
     console.log(req.url);
   }
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  //res.setHeader('Content-type', 'text/css');
+  res.write(fs.readFileSync('index.html'));
   
   switch (req.url) {
     case '/':
@@ -77,6 +80,9 @@ const server = http.createServer((req, res) => {
     case '/stats':
       res.write(`Le classement a été consulté ${statsCount} fois.`);
       break;
+    case '/test.css':
+      res.write(fs.readFileSync('test.css'));
+      break;
     default:
       res.write('404');
   }
@@ -88,8 +94,3 @@ const PORT = 8080;
 server.listen(PORT, () => {
   console.log(`listen: ${PORT}`);
 });
-
-const displayClassement = () => {
-  res.write('ici displayClassement');
-  res.write('<br>');
-};
