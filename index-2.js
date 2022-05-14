@@ -54,8 +54,9 @@ const hitParade = [{
     title: `Blind (feat. Emmi)`,
   },
 ];
-let songCount = 0;
 
+// initializing count
+let songCount = 0;
 // create a server object
 const server = http.createServer((req, res) => {
   // utf-8 in headers
@@ -63,9 +64,7 @@ const server = http.createServer((req, res) => {
 
   // initialize result
   let result = '';
-  // initializing count
   
-
   switch (req.url) {
       case "/":
           // update result
