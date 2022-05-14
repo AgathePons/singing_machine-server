@@ -56,16 +56,14 @@ const hitParade = [{
 ];
 let statsCount = 0;
 
-// Votre code va ici
 // create a server object
 const server = http.createServer((req, res) => {
   if (req.url !== '/favicon.ico') {
     console.log(req.url);
   }
-  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  //res.setHeader('Content-Type', 'text/html; charset=utf-8');
   //res.setHeader('Content-type', 'text/css');
   res.write(fs.readFileSync('index.html'));
-  
   switch (req.url) {
     case '/':
       res.write('Je m\'appelle Charlu, je m\'appelle Lili, vous êtes chez O\'clock');
